@@ -3,6 +3,7 @@ const fse = require('fs-extra'); // fs-extra负责文件的复制
 const download = require('download-git-repo'); // download-git-repo负责下载对应模板项目的git仓库
 const { TEMPLATE_GIT_REPO } = require('./constants');
 const chalk = require('chalk'); // 改变命令行输出样式
+const { green, red, grey, yellow } = chalk;
 const ora = require('ora'); // 一个优雅地命令行交互spinner
 const path = require('path');
 const { getDirFileName } = require('./utils');
@@ -65,12 +66,12 @@ Project.prototype.generate = function () {
 
   // 用RN脚手架创建项目，以保证项目的依赖版本为最新
   console.log();
-  const RNinitSpinner = ora(`初始化项目 ${chalk.green.bold(`react-native init ${projectName}`)}, 这个过程比较漫长，请耐心等待...`);
+  const RNinitSpinner = ora(`初始化项目 ${green.bold(`react-native init ${projectName}`)}, 这个过程比较漫长，请耐心等待...`);
   RNinitSpinner.start();
   exec(`react-native init ${projectName}`, (error) => {
     if (error) {
       RNinitSpinner.color = 'red';
-      RNinitSpinner.fail(chalk.red('初始化项目失败！'));
+      RNinitSpinner.fail(red('初始化项目失败！'));
       console.log(error);
     } else {
       RNinitSpinner.color = 'green';
@@ -99,20 +100,24 @@ Project.prototype.generate = function () {
 
         copyFiles.forEach((file) => {
           fse.copySync(path.join(downloadPath, file), path.join(projectPath, file));
-          console.log(`${chalk.green('  ✔  ')}${chalk.grey(`创建: ${projectName}/${file}`)}`);
+          console.log(`${green('√')}${grey(` 创建: ${projectName}/${file}`)}`);
         });
 
         fse.remove(downloadPath);
         process.chdir(projectPath);
 
         console.log();
-        console.log(chalk.green(' 创建项目成功！'));
+        console.log(`${green('√')}${green(' 创建项目成功！')}`);
         console.log();
-        console.log(chalk.green(' 开始愉快地搬砖吧！'));
+        console.log(`${green('√')}${green(' 开始愉快地搬砖吧！')}`);
         console.log();
-        console.log(chalk.blue(`  请手动执行如下命令，以安装依赖：`));
-        console.log(chalk.blue(`  cd ${projectName}`));
-        console.log(chalk.blue(`  yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage`));
+        console.log();
+        console.log(yellow(`完成如下两步，就大功告成了：`));
+        console.log();
+        console.log(yellow(`1、进入项目根目录：cd projectName`));
+        console.log();
+        console.log(yellow(`2、安装依赖：yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage`));
+        console.log(yellow(`（或者使用 npm install 代替 yarn add）`));
       })
     }
   })
