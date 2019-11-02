@@ -1,6 +1,6 @@
 {
   "name": "react-native-lxh-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cli for init react-native project",
   "bin": {
     "newrn": "bin/begin"
@@ -14,6 +14,9 @@
     "url": "https://github.com/lxhRose/react-native-lxh-cli.git"
   },
   "keywords": [
+    "react-native",
+    "react-native-cli",
+    "lvxinghai",
     "cli",
     "newrn"
   ],

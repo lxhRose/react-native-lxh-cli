@@ -5,8 +5,6 @@ const { TEMPLATE_GIT_REPO } = require('./constants');
 const chalk = require('chalk'); // 改变命令行输出样式
 const ora = require('ora'); // 一个优雅地命令行交互spinner
 const path = require('path');
-const memFs = require('mem-fs');
-const editor = require('mem-fs-editor'); // mem-fs-editor负责模板的复制以及嵌入模板字符串，它需要依赖mem-fs
 const { getDirFileName } = require('./utils');
 const { exec } = require('child_process'); // child_process负责执行命令行
 
@@ -14,8 +12,6 @@ function Project(options) {
   this.config = Object.assign({
     projectName: ''
   }, options);
-  // const store = memFs.create();
-  // this.memFsEditor = editor.create(store);
 }
 
 Project.prototype.create = function () {
@@ -78,7 +74,7 @@ Project.prototype.generate = function () {
       console.log(error);
     } else {
       RNinitSpinner.color = 'green';
-      RNinitSpinner.succeed('初始化项目成功');
+      RNinitSpinner.succeed('初始化项目成功！');
 
       const projectPath = path.join(process.cwd(), projectName);
       const downloadPath = path.join(projectPath, '__download__');
@@ -103,20 +99,20 @@ Project.prototype.generate = function () {
 
         copyFiles.forEach((file) => {
           fse.copySync(path.join(downloadPath, file), path.join(projectPath, file));
-          console.log(`${chalk.green('✔ ')}${chalk.grey(`创建: ${projectName}/${file}`)}`);
+          console.log(`${chalk.green('  ✔  ')}${chalk.grey(`创建: ${projectName}/${file}`)}`);
         });
 
         fse.remove(downloadPath);
         process.chdir(projectPath);
 
         console.log();
-        console.log(chalk.green('创建项目成功！'));
+        console.log(chalk.green(' 创建项目成功！'));
         console.log();
-        console.log(chalk.green('开始愉快地搬砖吧！'));
+        console.log(chalk.green(' 开始愉快地搬砖吧！'));
         console.log();
-        console.log(chalk.blue(`请手动执行如下命令，以安装依赖：`));
-        console.log(chalk.blue(`cd ${projectName}`));
-        console.log(chalk.blue(`yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage`));
+        console.log(chalk.blue(`  请手动执行如下命令，以安装依赖：`));
+        console.log(chalk.blue(`  cd ${projectName}`));
+        console.log(chalk.blue(`  yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage`));
       })
     }
   })
