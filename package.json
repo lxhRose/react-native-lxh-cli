@@ -1,0 +1,36 @@
+{
+  "name": "react-native-lxh-cli",
+  "version": "0.0.1",
+  "description": "A cli for init react-native project",
+  "bin": {
+    "newrn": "bin/begin"
+  },
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackie-gan/begin-cli.git"
+  },
+  "keywords": [
+    "cli",
+    "newrn"
+  ],
+  "author": "jackie-gan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jackie-gan/zero-cli/issues"
+  },
+  "homepage": "https://github.com/jackie-gan/zero-cli#readme",
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "commander": "^2.20.0",
+    "download-git-repo": "^2.0.0",
+    "fs-extra": "^8.0.1",
+    "inquirer": "^6.3.1",
+    "mem-fs": "^1.1.3",
+    "mem-fs-editor": "^6.0.0",
+    "ora": "^3.4.0"
+  }
+}

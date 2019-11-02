@@ -1,0 +1,10 @@
+#! /usr/bin/env node
+
+const program = require('commander'); // commander负责读取命令
+const { logPackageVersion } = require('../src/utils');
+
+logPackageVersion();
+
+program
+  .command('init [name]', 'init a React-Native project')
+  .parse(process.argv);
