@@ -3,7 +3,7 @@ const fse = require('fs-extra'); // fs-extra负责文件的复制
 const download = require('download-git-repo'); // download-git-repo负责下载对应模板项目的git仓库
 const { TEMPLATE_GIT_REPO } = require('./constants');
 const chalk = require('chalk'); // 改变命令行输出样式
-const { green, red, grey, yellow } = chalk;
+const { green, red, grey } = chalk;
 const ora = require('ora'); // 一个优雅地命令行交互spinner
 const path = require('path');
 const { getDirFileName } = require('./utils');
@@ -64,11 +64,11 @@ Project.prototype.inquire = function () {
 Project.prototype.generate = function () {
   const { projectName } = this.config;
 
-  // 用RN脚手架创建项目，以保证项目的依赖版本为最新
+  // 1、用 React-Native 脚手架创建基本项目，以保证项目的依赖版本为最新
   console.log();
-  const RNinitSpinner = ora(`初始化项目 ${green.bold(`react-native init ${projectName}`)}, 这个过程比较漫长，请耐心等待...`);
+  const RNinitSpinner = ora(`初始化项目 ${green.bold(`react-native init ${projectName}`)}, 大概需要几分钟的时间，请耐心等待...`);
   RNinitSpinner.start();
-  exec(`react-native init ${projectName}`, (error) => {
+  exec(`react-native init ${projectName}`, (error, stdout, stderr) => {
     if (error) {
       RNinitSpinner.color = 'red';
       RNinitSpinner.fail(red('初始化项目失败！'));
@@ -76,15 +76,14 @@ Project.prototype.generate = function () {
     } else {
       RNinitSpinner.color = 'green';
       RNinitSpinner.succeed('初始化项目成功！');
+      console.log(`${stderr}${stdout}`);
 
-      const projectPath = path.join(process.cwd(), projectName);
-      const downloadPath = path.join(projectPath, '__download__');
-
-      // 下载模板
+      // 2、下载自己git上存放的模板和必要文件
       console.log();
       const downloadSpinner = ora('正在下载模板，请稍等...');
       downloadSpinner.start();
-
+      const projectPath = path.join(process.cwd(), projectName);
+      const downloadPath = path.join(projectPath, '__download__');
       download(TEMPLATE_GIT_REPO, downloadPath, { clone: true }, (err) => {
         if (err) {
           downloadSpinner.color = 'red';
@@ -92,7 +91,7 @@ Project.prototype.generate = function () {
           return;
         }
         downloadSpinner.color = 'green';
-        downloadSpinner.succeed('下载成功！');
+        downloadSpinner.succeed('下载模板成功！');
 
         // 复制文件
         console.log();
@@ -106,21 +105,29 @@ Project.prototype.generate = function () {
         fse.remove(downloadPath);
         process.chdir(projectPath);
 
+        // 3、安装依赖
         console.log();
-        console.log(`${green('√')}${green(' 创建项目成功！')}`);
-        console.log();
-        console.log(`${green('√')}${green(' 开始愉快地搬砖吧！')}`);
-        console.log();
-        console.log();
-        console.log(yellow(`完成如下两步，就大功告成了：`));
-        console.log();
-        console.log(yellow(`1、进入项目根目录：cd projectName`));
-        console.log();
-        console.log(yellow(`2、安装依赖：yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage`));
-        console.log(yellow(`（或者使用 npm install 代替 yarn add）`));
-      })
+        const INSTALL = 'yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage';
+        const installSpinner = ora(`安装项目依赖 ${green.bold(INSTALL)}, 请稍后...`);
+        installSpinner.start();
+        exec(INSTALL, (error, stdout, stderr) => {
+          if (error) {
+            installSpinner.color = 'red';
+            installSpinner.fail(red('安装项目依赖失败，请自行重新安装！'));
+            console.log(error);
+          } else {
+            installSpinner.color = 'green';
+            installSpinner.succeed('安装依赖成功！');
+            console.log(`${stderr}${stdout}`);
+            console.log();
+            console.log(`${green('√')}${green(' 创建项目成功！')}`);
+            console.log();
+            console.log(`${green('√')}${green(' 开始愉快地搬砖吧！')}`);
+          }
+        }) // 3--end
+      }) // 2--end
     }
-  })
+  }) //1--end
 }
 
 module.exports = Project;
