@@ -11,3 +11,8 @@ react-native-lxh-cli
 使用
 ---
     newrn init projectName
+
+本地测试
+---
+    npm link  
+    newrn init projectName
