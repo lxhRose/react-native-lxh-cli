@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jackie-gan/begin-cli.git"
+    "url": "git+https://github.com/lxhRose/react-native-lxh-cli.git"
   },
   "keywords": [
     "cli",
@@ -20,9 +20,9 @@
   "author": "jackie-gan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jackie-gan/zero-cli/issues"
+    "url": "https://github.com/lxhRose/react-native-lxh-cli/issues"
   },
-  "homepage": "https://github.com/jackie-gan/zero-cli#readme",
+  "homepage": "https://github.com/lxhRose/react-native-lxh-cli#readme",
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
