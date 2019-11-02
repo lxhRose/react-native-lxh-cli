@@ -1,6 +1,6 @@
 {
   "name": "react-native-lxh-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A cli for init react-native project",
   "bin": {
     "newrn": "bin/begin"
@@ -11,18 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lxhRose/react-native-lxh-cli.git"
+    "url": "https://github.com/lxhRose/react-native-lxh-cli.git"
   },
   "keywords": [
     "cli",
     "newrn"
   ],
-  "author": "jackie-gan",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/lxhRose/react-native-lxh-cli/issues"
-  },
-  "homepage": "https://github.com/lxhRose/react-native-lxh-cli#readme",
+  "author": "lvxinghai",
+  "license": "ISC",
+  "homepage": "https://github.com/lxhRose/react-native-lxh-cli",
   "dependencies": {
     "chalk": "^2.4.2",
     "commander": "^2.20.0",
