@@ -6,7 +6,10 @@ react-native-lxh-cli
 
 安装：  
 ---
+如果你还没有安装过yarn和react-native-cli，请先安装：
+    
     npm install -g yarn react-native-cli 
+    
     npm install -g react-native-lxh-cli  
 使用
 ---
