@@ -1,3 +1,12 @@
-
-npm install -g yarn react-native-cli   
-yarn add axios react-native-gesture-handler react-native-reanimated react-native-screens react-native-ui-lvxinghai react-native-webview react-navigation react-redux redux redux-logger redux-thunk @react-native-community/async-storage
+react-native-lxh-cli
+===
+简介
+===
+这是一个基于 react-native-cli 的react-native构建脚手架。
+安装：  
+---
+    npm install -g yarn react-native-cli 
+    npm install -g react-native-lxh-cli  
+使用
+---
+    newrn init projectName
