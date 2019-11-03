@@ -2,7 +2,8 @@ react-native-lxh-cli
 ===
 简介
 ===
-这是一个基于 react-native-cli 的react-native项目构建脚手架；同时带有模板文件。  
+这是一个基于`react-native-cli`和`yarn`的`react-native`项目构建脚手架;  
+它可以创建一个带有网络请求、路由菜单、组件模板......等等一系列必备功能的项目。  
 
 安装：  
 ---
@@ -16,6 +17,7 @@ react-native-lxh-cli
     newrn init projectName 
     
 执行如上命令，创建一个带有如下功能的react-native项目：  
+  
 1、页面路由；  
 2、redux状态管理；  
 3、axios网络请求；  
@@ -33,10 +35,8 @@ react-native-lxh-cli
 本地测试
 ---
 项目根目录执行：  
-
     node bin/begin init projectName 
   
 或者link到全局：
-
     npm link  
     newrn init projectName
