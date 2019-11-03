@@ -30,7 +30,7 @@ react-native-lxh-cli
 10、组件模板`template`（`src/components/template`）。  
 
     提示：你可以使用 --version 参数（注意是两个杠）创建指定 react-native 版本的项目。
-    例如 newrn init MyApp --version 0.44.3。注意版本号必须精确到两个小数点。
+    例如 newrn init MyApp --version 0.59.9。注意版本号必须精确到两个小数点。
 
 本地测试
 ---
