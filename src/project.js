@@ -11,7 +11,8 @@ const { exec } = require('child_process'); // child_process负责执行命令行
 
 function Project(options) {
   this.config = Object.assign({
-    projectName: ''
+    projectName: '',
+    version: ''
   }, options);
 }
 
@@ -62,13 +63,14 @@ Project.prototype.inquire = function () {
 };
 
 Project.prototype.generate = function () {
-  const { projectName } = this.config;
+  const { projectName, version } = this.config;
 
   // 1、用 React-Native 脚手架创建基本项目，以保证项目的依赖版本为最新
   console.log();
-  const RNinitSpinner = ora(`初始化项目 ${green.bold(`react-native init ${projectName}`)}, 大概需要几分钟的时间，请耐心等待...`);
+  const RNINIT = `react-native init ${projectName} ${version ? `--version ${version}` : ''}`;
+  const RNinitSpinner = ora(`初始化项目 ${green.bold(RNINIT)}, 大概需要几分钟的时间，请耐心等待...`);
   RNinitSpinner.start();
-  exec(`react-native init ${projectName}`, (error, stdout, stderr) => {
+  exec(RNINIT, (error, stdout, stderr) => {
     if (error) {
       RNinitSpinner.color = 'red';
       RNinitSpinner.fail(red('初始化项目失败！'));

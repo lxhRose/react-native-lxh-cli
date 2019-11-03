@@ -6,5 +6,6 @@ const { logPackageVersion } = require('../src/utils');
 logPackageVersion();
 
 program
+  .usage('<command> [options]')
   .command('init [name]', 'init a React-Native project')
   .parse(process.argv);

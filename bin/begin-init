@@ -5,15 +5,17 @@ const Project = require('../src/project');
 
 program
   .option('--name [name]', '项目名称')
+  .option('--version [version]', 'react-native版本号')
   .parse(process.argv);
 
-const { name } = program;
+const { name, version } = program;
 const args = program.args;
 
 const projectName = args[0] || name;
 
 const project = new Project({
-  projectName
+  projectName,
+  version
 });
 
 project.create();
