@@ -27,9 +27,16 @@ react-native-lxh-cli
 9、Massage多功能提示框；   
 10、template组件模板（components/template）。  
 
-`提示：你可以使用--version参数（注意是两个杠）创建指定 react-native 版本的项目。例如 newrn init MyApp --version 0.44.3。注意版本号必须精确到两个小数点。`
+    提示：你可以使用--version参数（注意是两个杠）创建指定 react-native 版本的项目。
+    例如 newrn init MyApp --version 0.44.3。注意版本号必须精确到两个小数点。
 
 本地测试
 ---
+项目根目录执行：  
+
+    node bin/begin init projectName 
+  
+或者link到全局：
+
     npm link  
     newrn init projectName
