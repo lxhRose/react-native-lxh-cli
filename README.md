@@ -2,7 +2,7 @@ react-native-lxh-cli
 ===
 简介
 ===
-这是一个基于`react-native-cli`和`yarn`的`react-native`项目构建脚手架;  
+这是一个`react-native`项目构建脚手架;  
 它可以创建一个带有网络请求、导航器、组件模板......等等一系列必备功能的项目。  
 
 安装：  
