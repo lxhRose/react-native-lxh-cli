@@ -23,7 +23,7 @@ react-native-lxh-cli
 3、`axios`网络请求；  
 4、`async-storage`本地缓存；   
 5、`DateFormat`时间格式化；    
-6、`LoadImg`图片缓存；   
+6、`LoadImg`图片预加载；   
 7、`adaptation`页面自适应；   
 8、`Loading`组件；   
 9、`Massage`多功能提示框；   
