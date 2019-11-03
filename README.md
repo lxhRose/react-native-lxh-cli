@@ -27,7 +27,7 @@ react-native-lxh-cli
 7、页面自适应`adaptation`；   
 8、加载提示`Loading`；   
 9、多功能消息弹框`Massage`；   
-10、组件模板`template`（`components/template`）。  
+10、组件模板`template`（`src/components/template`）。  
 
     提示：你可以使用 --version 参数（注意是两个杠）创建指定 react-native 版本的项目。
     例如 newrn init MyApp --version 0.44.3。注意版本号必须精确到两个小数点。
