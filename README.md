@@ -9,7 +9,7 @@ react-native-lxh-cli
 ---
     npm install -g react-native-lxh-cli
     
-如果你还没有安装过yarn和react-native-cli，请先安装：
+如果你还没有安装过`yarn`和`react-native-cli`，请先安装：
 
     npm install -g yarn react-native-cli   
 使用
@@ -35,8 +35,10 @@ react-native-lxh-cli
 本地测试
 ---
 项目根目录执行：  
+
     node bin/begin init projectName 
   
 或者link到全局：
+
     npm link  
     newrn init projectName
